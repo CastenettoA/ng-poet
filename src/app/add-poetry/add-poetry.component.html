@@ -1,50 +1,25 @@
-<style>
-    .form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 1em;
-    }   
-</style>
 
 <h1>#Add <u>Poetry</u></h1>
 <p style="margin-top: -1em;">Fill the form below and send it to add a poetry!</p>
 
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Add a poetry</mat-card-title>
+        <mat-card-title>Add a poetry (template driven)</mat-card-title>
     <mat-card-subtitle>add all field and send it for add a poetry to firebase database.</mat-card-subtitle>
     </mat-card-header>
     
-    <mat-card-content class="form">
-        
+    <mat-card-content>
         <!--  form field -->
-        <mat-form-field appearance="fill">
-            <mat-label>Poetry Title</mat-label>
-            <input matInput>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Poetry Author</mat-label>
-            <input matInput>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Poetry content</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field>    
-
-          <button mat-raised-button color="primary">Poem it!</button>
-
-
+        <app-poetry-form-template-driven></app-poetry-form-template-driven>
     </mat-card-content>
 </mat-card>
 
   <ul>
     TODO
-    <li>1- usare un approccio documentato per la creazione di form (magari provarli entrambi.</li>
-    <li>2- concludere la parte logica del form, far funzionare il tutto</li>
-    <li>3- collegare un database SAAS semplice (magari + semplice di firebase); un microservizio...</li>
-    <li>4- mostrare in homepage le poesie</li>
-    <li>5- centratura.</li>
+    <li>1- <s>usare un approccio documentato per la creazione di form</s>(magari provarli entrambi.</li>
+    <li>2- <s>concludere la parte logica del form, far funzionare il tutto</s></li>
+    <li>3- <s>collegare un database SAAS semplice (magari + semplice di firebase); un microservizio...</s></li>
+    <li>4- <s>mostrare in homepage le poesie</s></li>
+    <li>6- add type to mongo service</li>
+    <li>use of rxjs or a more stable http approach</li>
   </ul>

@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './add-poetry.component.html',
   styleUrls: ['./add-poetry.component.scss']
 })
+
 export class AddPoetryComponent {
 
 }

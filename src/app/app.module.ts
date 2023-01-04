@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { AddPoetryComponent } from './add-poetry/add-poetry.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 // material comp.
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -15,6 +18,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import { PoetryFormTemplateDrivenComponent } from './components/poetry-form-template-driven/poetry-form-template-driven.component';
 
 
 @NgModule({
@@ -22,14 +28,18 @@ import {MatInputModule} from '@angular/material/input';
     AppComponent,
     HomeComponent,
     AddPoetryComponent,
+    PoetryFormTemplateDrivenComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
 
     // material comp.
-    MatInputModule, MatSelectModule, MatSlideToggleModule, MatMenuModule, MatButtonModule, MatFormFieldModule, MatCardModule
+    // icon list https://stackoverflow.com/questions/50637666/where-do-i-find-a-list-of-all-mat-icons-angular
+    MatIconModule, MatSnackBarModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatMenuModule, MatButtonModule, MatFormFieldModule, MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,31 @@
+<style>
+    mat-card {
+        background-color: rgb(234, 241, 247);
+    }
+</style>
+
+<h1>#Welcome to <u>poetry homepage</u></h1>
+<p style="margin-top: -1em;">Below are listed a collections of poetry from a variety of authors.</p>
+
+
+<div *ngIf="poetries.length">
+    <mat-card *ngFor="let poetry of poetries" style="margin-bottom: 1em;">
+        <mat-card-header>
+            <mat-card-title style="font-size: 1.3em;">{{poetry.title}}</mat-card-title>
+            <mat-card-subtitle>di {{poetry.author}}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content style="margin-top: .6em;">
+            <p>{{ poetry.content }}</p>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button (click)="deletePoetry(poetry._id!)" mat-icon-button aria-label="Example icon button with a plus one icon">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button (click)="editPoetry(poetry._id!)" mat-icon-button aria-label="Example icon button with a plus one icon">
+              <mat-icon>edit_note</mat-icon>
+            </button>
+          </mat-card-actions>
+    </mat-card>
+</div>
