@@ -1,5 +1,5 @@
 <style>
-    .form {
+    form {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -7,24 +7,22 @@
     }   
 </style>
 
-<form (ngSubmit)="onSubmit()" #poetryForm="ngForm" class="form">
+<form (ngSubmit)="onSubmit()" #poetryForm="ngForm">
   <mat-form-field appearance="fill">
     <mat-label>Poetry Title</mat-label>
-    <input matInput [(ngModel)]="model.title" name="title">
+    <input matInput [(ngModel)]="model.title" name="title" required>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Poetry Author</mat-label>
-    <input matInput [(ngModel)]="model.author" name="author">
+    <input matInput [(ngModel)]="model.author" name="author" required>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Poetry content</mat-label>
-    <textarea matInput [(ngModel)]="model.content" name="content"></textarea>
+    <textarea matInput [(ngModel)]="model.content" name="content" required></textarea>
   </mat-form-field>    
 
   <button mat-raised-button color="primary"
   [disabled]="!poetryForm.form.valid">Poem it!</button>
 </form>
-
-{{ model | json}}

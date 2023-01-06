@@ -1,0 +1,28 @@
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 1em;
+    }   
+</style>
+<form *ngIf="poetry" [formGroup]="editPoetryForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Poetry Title</mat-label>
+        <input matInput name="title" formControlName="title" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Poetry Author</mat-label>
+        <input matInput name="author" formControlName="author" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Poetry Content</mat-label>
+        <textarea style="height:200px" matInput name="content" formControlName="content" required></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary"
+      [disabled]="!editPoetryForm.valid">Edit it!</button>
+</form> 

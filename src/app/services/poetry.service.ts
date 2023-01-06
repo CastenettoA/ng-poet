@@ -12,32 +12,48 @@ export class PoetryService {
   constructor(private http: HttpClient) { }
 
   // save new poetry to the database
-  addPoetry(poetry:Poetry): Observable<Poetry> {
+  addPoetries(poetry:Poetry): Observable<Poetry> {
     // 1. send post request to node-poet server
-    return this.http.post<Poetry>('http://localhost:7000/poetry', poetry)
+    return this.http.post<Poetry>('http://localhost:7000/poetries', poetry)
       .pipe(
         catchError(this.handleError)
       )
   }
 
-  // get all poetries
-  getPoetries(): Observable<any> {
-    return this.http.get<any>('http://localhost:7000/poetries')
-      .pipe(
-        catchError(this.handleError)
-      )
+  // get single poetries by _id or all poetries
+  getPoetries(_id?:string): Observable<Poetry[]> {
+    if(_id) {
+      // get single poetries
+        return this.http.get<any>(`http://localhost:7000/poetries/${_id}`)
+        .pipe(
+          catchError(this.handleError)
+        )
+    } else {
+      // get all poetries
+        return this.http.get<any>('http://localhost:7000/poetries')
+        .pipe(
+          catchError(this.handleError)
+        )
+    }
   }
 
-  deletePoetry(_id: string) {
-    console.log('from ng deletePoetry')
-    return this.http.delete<any>('http://localhost:7000/poetry/'+_id)
+  // edit single poetry by _id
+  editPoetries(_id:string|undefined, body:Poetry): Observable<string> {
+    return this.http.put<any>(`http://localhost:7000/poetries/${_id}`, body)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  deletePoetries(_id: string) {
+    return this.http.delete<any>('http://localhost:7000/poetries/'+_id)
       .pipe(
         catchError(this.handleError)
       )
   }
 
   handleError(error: HttpErrorResponse) {
-    console.log('errore!!!')
+    console.log('errore da poetry.service.ts')
     console.log(error);
     return throwError(()=> new Error('error in post request.'))
   }

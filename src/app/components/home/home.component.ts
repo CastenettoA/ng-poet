@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { Poetry } from 'src/app/interfaces/poetry';
 import { PoetryService } from 'src/app/services/poetry.service';
@@ -15,7 +16,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private poetryService: PoetryService,
-    private _snackBar: MatSnackBar) {}
+    private _snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    private router: Router) {}
 
   ngOnInit() {
     this.getPoetries();
@@ -27,16 +30,17 @@ export class HomeComponent implements OnInit {
 
   getPoetries() {
     this.poetryService.getPoetries().subscribe((poetries)=> {
-      this.poetries = poetries.data;
+      this.poetries = poetries;
     })
   }
 
-  editPoetry(_id: string) {
-
+  // send user to edit poetry page
+  goToUpdatePage(_id: string) {
+    this.router.navigate([`/edit-poetry/${_id}`])
   }
 
   deletePoetry(_id: string) {
-    this.poetryService.deletePoetry(_id).subscribe((res)=> {
+    this.poetryService.deletePoetries(_id).subscribe((res)=> {
       if(res.data.deletedCount) {
         // successfull delete. Refresh poetries [] and display snackBar
         this.getPoetries();

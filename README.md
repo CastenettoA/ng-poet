@@ -1,4 +1,3 @@
 # Angular app to add and read poetry.
-ngPoetryDB
-U6pw7NuKxIXfXifw
-mongodb+srv://ngPoetryDB:U6pw7NuKxIXfXifw@ngpoetry.w6cuuop.mongodb.net/test
+Un applicazione Angular dove è possibile visualizzare, aggiungere e modificare poesie.
+Basata sulle api del progetto "node-poet" (express + angular)

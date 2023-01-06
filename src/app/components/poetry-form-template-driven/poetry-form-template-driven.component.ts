@@ -23,11 +23,12 @@ export class PoetryFormTemplateDrivenComponent {
 
   onSubmit() {
     this.submitted = true;
-    this.poetryService.addPoetry(this.model)
+    this.poetryService.addPoetries(this.model)
       .subscribe((res:any)=> {
         if(res.data._id) {
           // poetry inseterd succesfully. Send feedback to user
           this.openSnackBar(`Poetry with title "${this.model.title}" was inserted succesfully`, 'close')
+          // todo: clean form after submit
         }
       });
   }

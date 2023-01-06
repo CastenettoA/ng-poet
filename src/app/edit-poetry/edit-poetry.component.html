@@ -1,0 +1,4 @@
+<h1 style="margin-bottom: 0em;">Edit Poetry with title <u *ngIf="poetry">{{poetry.title}}</u></h1>
+<small>You are now editing poetry with _id: <b>{{current_id}}</b>.</small>
+<br><br>
+<app-edit-poetry-form-reactive [poetry]="poetry"></app-edit-poetry-form-reactive>
