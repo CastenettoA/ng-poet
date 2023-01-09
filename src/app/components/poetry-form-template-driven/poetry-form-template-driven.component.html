@@ -23,6 +23,12 @@
     <textarea matInput [(ngModel)]="model.content" name="content" required></textarea>
   </mat-form-field>    
 
-  <button mat-raised-button color="primary"
+  <button type="submit" mat-raised-button color="primary"
   [disabled]="!poetryForm.form.valid">Poem it!</button>
+
+  <hr>
+  <button type="button" (click)="addTestPoetry()" mat-button>o aggiungi una poesia di test...</button>
+
 </form>
+
+

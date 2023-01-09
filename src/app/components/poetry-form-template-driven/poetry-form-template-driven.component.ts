@@ -1,6 +1,5 @@
 import { Component,  } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { Poetry } from 'src/app/interfaces/poetry';
 import { PoetryService } from 'src/app/services/poetry.service';
 
@@ -15,7 +14,6 @@ export class PoetryFormTemplateDrivenComponent {
   submitted = false;
 
   constructor(
-    private router:Router,
     private poetryService: PoetryService,
     private _snackBar: MatSnackBar) {}
 
@@ -23,6 +21,11 @@ export class PoetryFormTemplateDrivenComponent {
     this._snackBar.open(message, action);
   }
 
+  /**
+   * 1. add poetry to db
+   * 2. inform user with snackBar
+   * 3. clear the form (@todo: when cleared the form is red, it's not beautyfull.)
+   */
   onSubmit() {
     this.submitted = true;
     this.poetryService.addPoetries(this.model)
@@ -31,7 +34,22 @@ export class PoetryFormTemplateDrivenComponent {
           // poetry inseterd succesfully. Send feedback to user
           this.openSnackBar(msg.res, 'close')
           this.model = new Poetry(undefined,'','','');
-          // todo: clean form after submit
+        }
+      });
+  }
+
+  // add a sample poetry to db
+  addTestPoetry() {
+    const c = 'Di ciò che posso essere io per me, non solo non potete saper nulla voi, ma nulla neppure io stesso.';
+    const testPoetry:Poetry = {
+      _id: undefined, title: 'Lo Sconosciuto', author: 'Luigi Pirandello', content: c
+    };
+
+    this.poetryService.addPoetries(testPoetry)
+      .subscribe((msg:any)=> {
+        if(msg.res) {
+          // poetry inseterd succesfully. Send feedback to user
+          this.openSnackBar('La poesia di test è stata aggiunta.', 'ok')
         }
       });
   }

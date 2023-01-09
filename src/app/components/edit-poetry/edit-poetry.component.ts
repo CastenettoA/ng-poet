@@ -2,9 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Poetry } from '../interfaces/poetry';
-import { PoetryService } from '../services/poetry.service';
-
+import { Poetry } from 'src/app/interfaces/poetry';
+import { PoetryService } from 'src/app/services/poetry.service';
 @Component({
   selector: 'app-edit-poetry',
   templateUrl: './edit-poetry.component.html',
