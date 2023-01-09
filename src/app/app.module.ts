@@ -23,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { PoetryFormTemplateDrivenComponent } from './components/poetry-form-template-driven/poetry-form-template-driven.component';
 import { EditPoetryComponent } from './edit-poetry/edit-poetry.component';
 import { EditPoetryFormReactiveComponent } from './components/edit-poetry-form-reactive/edit-poetry-form-reactive.component';
+import { PoetryComponent } from './components/poetry/poetry.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { EditPoetryFormReactiveComponent } from './components/edit-poetry-form-r
     PoetryFormTemplateDrivenComponent,
     EditPoetryComponent,
     EditPoetryFormReactiveComponent,
+    PoetryComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,13 +40,11 @@ export class HomeComponent implements OnInit {
   }
 
   deletePoetry(_id: string) {
-    this.poetryService.deletePoetries(_id).subscribe((res)=> {
-      if(res.data.deletedCount) {
-        // successfull delete. Refresh poetries [] and display snackBar
-        this.getPoetries();
-        this.openSnackBar(`Poetry succesfully deleted`, 'close')
+    this.poetryService.deletePoetries(_id).subscribe((msg)=> {
+      if(msg.res) {
+         this.getPoetries();
+         this.openSnackBar(msg.res, 'close')
       }
     });
   }
-
 }

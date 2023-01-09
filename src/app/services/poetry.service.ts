@@ -53,8 +53,8 @@ export class PoetryService {
   }
 
   handleError(error: HttpErrorResponse) {
-    console.log('errore da poetry.service.ts')
     console.log(error);
-    return throwError(()=> new Error('error in post request.'))
+    return throwError(()=> new Error('error in post request'))
+    // todo: display an error with toast! (http interceptor?)
   }
 }

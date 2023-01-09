@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges } from
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap, takeUntil, takeWhile} from 'rxjs/operators';
+import { map, tap, takeUntil, takeWhile, mergeScan} from 'rxjs/operators';
 import { Poetry } from 'src/app/interfaces/poetry';
 import { PoetryService } from 'src/app/services/poetry.service';
 
@@ -50,16 +50,16 @@ export class EditPoetryFormReactiveComponent implements OnChanges {
     // send edit request
     let poetry = this.editPoetryForm.value as Poetry;
     this.poetryService.editPoetries(this.poetry?._id, poetry)
-      .subscribe((res:any)=> {
-        console.log('result of edit', res)
-        // if(res.data._id) {
-        //   // poetry inseterd succesfully. Send feedback to user
-        //   this.openSnackBar(`Poetry with title "${this.editPoetryForm.value.title}" was inserted succesfully`, 'close')
-        // }
+      .subscribe((msg:any)=> {
+        if(msg.res) {
+          this.openSnackBar(msg.res, 'close');
+        }
       });
-  }
-  openSnackBar(arg0: string, arg1: string) {
-    throw new Error('Method not implemented.');
+  } 
+
+  // todo: create snackbar services!
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 }
